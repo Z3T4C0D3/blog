@@ -29,7 +29,6 @@ return new class extends Migration
             //RESTRICCION DE FK
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_clasificacion')->references('id_clasificacion')->on('clasificaciones')->onDelete('cascade');
-            
             $table->foreign('id_editorial')->references('id_editorial')->on('editoriales')->onDelete('cascade');
             $table->timestamps();
         });

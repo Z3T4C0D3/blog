@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('libros_autores', function (Blueprint $table) {
+        Schema::create('libros_tags', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('libros_id');
+            $table->unsignedBigInteger('tags_id');
 
-            $table->unsignedBigInteger('id_libro');
-            $table->unsignedBigInteger('id_autor');
-
-            $table->foreign('id_libro')->references('id_libro')->on('libros')->onDelete('cascade');
-            $table->foreign('id_autor')->references('id_autor')->on('autores')->onDelete('cascade');
+            $table->foreign('libros_id')->references('id_libro')->on('libros')->onDelete('cascade');
+            $table->foreign('tags_id')->references('id_tag')->on('tags')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('libros_autores');
+        Schema::dropIfExists('libros_tags');
     }
 };

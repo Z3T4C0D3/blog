@@ -3,7 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\autores;
+use App\Models\clasificaciones;
+use App\Models\editoriales;
+use App\Models\libros;
+use App\Models\tags;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +21,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Storage::makeDirectory('public/libros');
+        $this->call(userSeeder::class);
+        $this->call(clasificacionSeeder::class);
+        editoriales::factory(5)->create();
+        tags::factory(8)->create();
+        autores::factory(15)->create();
+        $this->call(librosSeeder::class);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
