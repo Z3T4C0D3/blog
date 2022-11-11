@@ -1,3 +1,6 @@
 <x-app-layout>
-    Mensaje de prueba
+    <div>
+        <h1>Prueba</h1>
+    </div>
+    
 </x-app-layout>
