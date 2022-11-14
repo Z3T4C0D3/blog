@@ -15,7 +15,7 @@ class librosSeeder extends Seeder
      */
     public function run()
     {
-        $libros = libros::factory(10)->create();
+        $libros = libros::factory(30)->create();
         foreach($libros as $libro){
             images::factory(1)->create([
                 'imageable_id' => $libro->id,

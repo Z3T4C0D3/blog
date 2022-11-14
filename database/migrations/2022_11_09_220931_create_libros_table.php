@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('libros', function (Blueprint $table) {
-            $table->id('id_libro');
+            $table->id();
             $table->string('titulo');
             $table->string('codigo');
             $table->string('slugLibros');
@@ -28,8 +28,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_editorial');
             //RESTRICCION DE FK
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_clasificacion')->references('id_clasificacion')->on('clasificaciones')->onDelete('cascade');
-            $table->foreign('id_editorial')->references('id_editorial')->on('editoriales')->onDelete('cascade');
+            $table->foreign('id_clasificacion')->references('id')->on('clasificaciones')->onDelete('cascade');
+            $table->foreign('id_editorial')->references('id')->on('editoriales')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class libros extends Model
 {
     use HasFactory;
-
     //RELACION UNO A MUCHOS INVERSA
     public function user(){
         return $this->belognsTo(User::class);
@@ -16,8 +15,8 @@ class libros extends Model
     public function clasificaciones(){
         return $this->belognsTo(clasificaciones::class);
     }
-    public function editoriales(){
-        return $this->belongsTo(editoriales::class);
+    public function editorial(){
+        return $this->belognsTo(editoriales::class);
     }
     //RELACION MUCHOS A MUCHOS
     public function tags(){
@@ -27,7 +26,7 @@ class libros extends Model
         return $this->belongsToMany(autores::class);
     }
     //RELACION POLIMORFICA UNO A UNO
-    public function images(){
+    public function image(){
         return $this->morphOne(images::class, 'imageable');
     }
 

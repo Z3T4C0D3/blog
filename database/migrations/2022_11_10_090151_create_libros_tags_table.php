@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('libros_id');
             $table->unsignedBigInteger('tags_id');
 
-            $table->foreign('libros_id')->references('id_libro')->on('libros')->onDelete('cascade');
-            $table->foreign('tags_id')->references('id_tag')->on('tags')->onDelete('cascade');
+            $table->foreign('libros_id')->references('id')->on('libros')->onDelete('cascade');
+            $table->foreign('tags_id')->references('id')->on('tags')->onDelete('cascade');
             $table->timestamps();
         });
     }

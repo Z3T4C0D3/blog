@@ -18,4 +18,16 @@ module.exports = {
     },
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+
+    theme: {
+        container: {
+          padding: {
+            DEFAULT: 'px-2',
+            sm: 'px-6',
+            lg: 'px-8',
+            xl: '5rem',
+            '2xl': '6rem',
+          },
+        },
+      },
 };

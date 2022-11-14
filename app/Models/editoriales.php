@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class editoriales extends Model
 {
     use HasFactory;
+    
     //RELACION UNO A MUCHOS
-    public function libros(){
+    /*public function libros(){
         return $this->hasMany(libros::class);
-    }
+    }*/
 }

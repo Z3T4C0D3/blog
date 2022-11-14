@@ -20,6 +20,7 @@ class tagsFactory extends Factory
         return [
             'describeTag' => $describeTag,
              'slugTag' => Str::slug($describeTag)
+             
         ];
     }
 }

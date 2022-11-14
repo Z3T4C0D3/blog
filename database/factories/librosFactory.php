@@ -25,12 +25,12 @@ class librosFactory extends Factory
             'titulo' => $titulo,
             'codigo' =>$this->faker->unique()->regexify('[A-Z]{2}[0-9]{6}'),
             'slugLibros' => Str::slug($titulo),
-            'extract' => $this->faker->text(250),
-            'body' =>$this->faker->text(2000),
+            'extract' => $this->faker->text(100),
+            'body' =>$this->faker->text(500),
             'status' =>$this->faker->randomElement([1,2]),
             'user_id' =>User::all()->random()->id,
-            'id_clasificacion' => clasificaciones::all()->random()->id_clasificacion,
-            'id_editorial' => editoriales::all()->random()->id_editorial
+            'id_clasificacion' => clasificaciones::all()->random()->id,
+            'id_editorial' => editoriales::all()->random()->id
         ];
     }
 }
