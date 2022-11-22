@@ -29,7 +29,7 @@ class librosFactory extends Factory
             'body' =>$this->faker->text(500),
             'status' =>$this->faker->randomElement([1,2]),
             'user_id' =>User::all()->random()->id,
-            'id_clasificacion' => clasificaciones::all()->random()->id,
+            'clasificaciones_id' => clasificaciones::all()->random()->id,
             'id_editorial' => editoriales::all()->random()->id
         ];
     }

@@ -1,5 +1,6 @@
 <x-app-layout>
-    <div class="container mx-auto py-8">
+<div>
+    <div class="container mx-auto py-8 bg-[#83c5be]">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
             @foreach($libros as $libro)
@@ -9,8 +10,9 @@
                 @if($loop->first) 
                      md:col-span-2
                 @endif
-                " 
-                style="background-image: url({{$libro->image->url}})">
+                //Storage::url($libro->image->url) 
+                //
+                "style="background-image: url({{$libro->image->url}})">
                     
                         <div class="w-full h-full px-8 flex flex-col justify-center">
                             <div>
@@ -27,7 +29,7 @@
                                 @endforeach
                             </div>
                             <h1 class="text-4xl text-black leading-8 font-bold">
-                                <a href="">
+                                <a href="{{route('libros.show', $libro )}}">
                                     {{$libro->titulo}}
                                 </a>
                             </h1>
@@ -38,5 +40,7 @@
         <div class="mt-4">
             {{$libros->links()}}
         </div>
+        
     </div>
+</div>
 </x-app-layout>

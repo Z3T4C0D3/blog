@@ -39,10 +39,65 @@
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <!--<a href="#" class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md" aria-current="page">Dashboard</a>-->
-            @foreach ($clasificaciones as $clasificacion)
-              <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">{{$clasificacion->describeClasificacion}}</a>
-            @endforeach
+            <!-- Dropdown Menu Clasificaciones -->
+            <div class="relative" x-data="{ isOpen: false}">
+                    <a 
+                            @click="isOpen = !isOpen" 
+                            @keydown.escape="isOpen = false" 
+                            class=
+                            "flex items-center
+                            px-3
+                            py-3
+                            bg-blue-600
+                            text-white
+                              font-bold
+                              text-xs
+                              leading-tight
+                              uppercase
+                              rounded
+                              shadow-md
+                              hover:bg-blue-700 hover:shadow-lg
+                              focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                              active:bg-blue-800 active:shadow-lg active:text-white
+                              transition
+                              duration-150
+                              ease-in-out
+                              whitespace-nowrap" 
+                    >
+                        <Span>Clasificaciones</Span>
+                        <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fas"
+                        data-icon="caret-down"
+                        class="w-2 ml-2"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512"
+                      >
+                      <path
+                        fill="currentColor"
+                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                      ></path>
+                        </svg>
+                    </a>
+                    <ul x-show="isOpen"
+                        @click.away="isOpen = false"
+                        class="absolute font-bold bg-white shadow overflow-hidden rounded w-48 border mt-2 py-1 right-0 z-20"
+                    >
+                        <li class="border-b border-gray-400">
+                        @foreach ($clasificaciones as $clasificacion)
+                            <a href="#" class="flex items-center px-3 py-3 hover:bg-blue-600">
+                                
+                                <span class="ml-2">{{$clasificacion->describeClasificacion}}</span>
+                            </a>
+                            @endforeach
+                        </li>
+                        
+                    </ul>
+                </div>
           </div>
+          <!-- Final Dropdown Clasificaciones -->
         </div>
       </div>
       @auth
@@ -104,9 +159,63 @@
     <div class="px-2 pt-2 pb-3 space-y-1">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
       <!-- <a href="#" class="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md" aria-current="page">Dashboard</a> -->
-      @foreach ($clasificaciones as $clasificacion)
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">{{$clasificacion->describeClasificacion}}</a>
-      @endforeach
+      <!-- Dropdown Menu Clasificaciones -->
+      <div class="relative" x-data="{ isOpen: false}">
+                    <a 
+                            @click="isOpen = !isOpen" 
+                            @keydown.escape="isOpen = false" 
+                            class=
+                            "flex items-center
+                            px-3
+                            py-3
+                            bg-blue-600
+                            text-white
+                              font-medium
+                              text-xs
+                              leading-tight
+                              uppercase
+                              rounded
+                              shadow-md
+                              hover:bg-blue-700 hover:shadow-lg
+                              focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                              active:bg-blue-800 active:shadow-lg active:text-white
+                              transition
+                              duration-150
+                              ease-in-out
+                              whitespace-nowrap" 
+                    >
+                        <Span>Clasificaciones</Span>
+                        <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fas"
+                        data-icon="caret-down"
+                        class="w-2 ml-2"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512"
+                      >
+                      <path
+                        fill="currentColor"
+                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                      ></path>
+                        </svg>
+                    </a>
+                    <ul x-show="isOpen"
+                        @click.away="isOpen = false"
+                        class="absolute font-bold bg-white shadow overflow-hidden rounded w-48 border mt-2 py-1 right-0 z-20"
+                    >
+                        <li class="border-b border-gray-400">
+                        @foreach ($clasificaciones as $clasificacion)
+                            <a href="#" class="flex items-center px-3 py-3 hover:bg-blue-600">
+                                
+                                <span class="ml-2">{{$clasificacion->describeClasificacion}}</span>
+                            </a>
+                            @endforeach
+                        </li>
+                        
+                    </ul>
+                    <!-- Final Dropdown Clasificaciones -->
     </div>
   </div>
 </nav>

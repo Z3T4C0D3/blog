@@ -13,7 +13,7 @@ class libros extends Model
         return $this->belognsTo(User::class);
     }
     public function clasificaciones(){
-        return $this->belognsTo(clasificaciones::class);
+        return $this->belongsTo(clasificaciones::class);
     }
     public function editorial(){
         return $this->belognsTo(editoriales::class);

@@ -23,12 +23,12 @@ return new class extends Migration
             //Estatus BORRADOR 1|PUBLICADO 2
             $table->enum('status', [1,2])->default(1);
             //FOREIGN KEY
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('id_clasificacion');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('clasificaciones_id');
             $table->unsignedBigInteger('id_editorial');
             //RESTRICCION DE FK
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_clasificacion')->references('id')->on('clasificaciones')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('clasificaciones_id')->references('id')->on('clasificaciones')->onDelete('cascade');
             $table->foreign('id_editorial')->references('id')->on('editoriales')->onDelete('cascade');
             $table->timestamps();
         });
