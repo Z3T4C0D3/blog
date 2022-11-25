@@ -9,7 +9,7 @@ class tags extends Model
 {
     use HasFactory;
     //RELACION MUCHOS A MUCHOS
-    public function tags(){
+    public function libros(){
         return $this->belongsToMany(libros::class);
     }
     

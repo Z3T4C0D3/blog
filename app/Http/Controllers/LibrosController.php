@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\autores;
 use App\Models\libros;
 use App\Models\clasificaciones;
+use App\Models\tags;
 use Illuminate\Http\Request;
 
 class LibrosController extends Controller
@@ -27,9 +29,18 @@ class LibrosController extends Controller
         $libros = libros::where('clasificaciones_id', $clasificaciones->id)
             ->where('status', 2)
             ->latest('id')
-            ->paginate(2);
+            ->paginate(5);
 
         return view('libros.clasificaciones', compact('libros', 'clasificaciones'));
+    }
+    public function tag(tags $tag){
+        $libros = $tag->libros()->where('status', 2)->latest('id')->paginate(5);
+        return view('libros.tag', compact('libros', 'tag'));
+
+    }
+    public function autor(autores $autor){
+        $libros = $autor->libros()->where('status', 2)->latest('id')->paginate(5);
+        return view('libros.autor', compact('libros', 'autor'));
     }
 
 }

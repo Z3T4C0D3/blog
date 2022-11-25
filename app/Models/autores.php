@@ -9,7 +9,7 @@ class autores extends Model
 {
     use HasFactory;
     //RELACION MUCHOS A MUCHOS
-    public function autores(){
-        return $this->belongsToMany(autores::class);
+    public function libros(){
+        return $this->belongsToMany(libros::class);
     }
 }

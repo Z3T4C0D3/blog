@@ -10,7 +10,7 @@
             Clasificación: {{$clasificaciones->describeClasificacion}}
         </h1>
         @foreach ($libros as $libro)
-            <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
+        <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
                 <img class="w-full h-72 object-cover object-center" src="{{$libro->image->url}}" alt="">
                 <div class="px-6 py-4">
                     <h1 class="font-bold text-xl mb-2">
@@ -21,10 +21,12 @@
                     </div>
                     <div class="px-6 pt-4 pb-2">
                         @foreach($libro->tags as $tag)
-                            <a class="inline-block bg-gray-500 rounded-full px-3 py-1 text-sm text-white" href="">{{$tag->describeTag}}</a>
+                            <a class="inline-block bg-rose-500 rounded-full px-3 py-1 text-sm text-white" 
+                            href="{{route('libros.tag', $tag)}}">{{$tag->describeTag}}</a>
                         @endforeach
                         @foreach($libro->autores as $autor)
-                            <a class="inline-block bg-gray-500 rounded-full px-3 py-1 text-sm text-white" href="">{{$autor->nombre}}</a>
+                            <a class="inline-block bg-gray-500 rounded-full px-3 py-1 text-sm text-white" 
+                            href="{{route('libros.autor', $autor)}}">{{$autor->nombre}}</a>
                         @endforeach
                     </div>
                 </div>

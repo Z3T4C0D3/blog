@@ -7,6 +7,7 @@
                 <article class="w-full h-80 
                 bg-cover 
                 bg-center 
+                rounded-lg
                 @if($loop->first) 
                      md:col-span-2
                 @endif
@@ -17,11 +18,11 @@
                         <div class="w-full h-full px-8 flex flex-col justify-center">
                             <div>
                                 @foreach($libro->tags as $tag)
-                                    <a href="" 
+                                    <a href="{{route('libros.tag', $tag)}}" 
                                     class="inline-block 
                                     px_3 
                                     h-6 
-                                    bg-gray-600 
+                                    bg-rose-600 
                                     text-white
                                     rounded-full
                                     px-3 py-1
@@ -33,7 +34,7 @@
                             </div>
                             <div>
                                 @foreach($libro->autores as $autor)
-                                    <a href="" 
+                                    <a href="{{route('libros.autor', $autor)}}" 
                                     class="inline-block 
                                     px_3 
                                     h-6 
