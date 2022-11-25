@@ -8,7 +8,7 @@ use App\Http\Controllers\LibrosController;
 
 Route::get('/', [LibrosController::class, 'index'])->name('libros.index');
 Route::get('libros/{libro}', [LibrosController::class, 'show'])->name('libros.show');
-Route::get('clasificaciones/{categorias}', [LibrosController::class, 'clasificaciones'])->name('libros.clasificaciones');
+Route::get('clasificaciones/{clasificaciones}', [LibrosController::class, 'clasificaciones'])->name('libros.clasificaciones');
 
 Route::middleware([
     'auth:sanctum',

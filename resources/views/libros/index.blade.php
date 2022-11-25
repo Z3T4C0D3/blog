@@ -23,8 +23,27 @@
                                     h-6 
                                     bg-gray-600 
                                     text-white
-                                    rounded-full">
+                                    rounded-full
+                                    px-3 py-1
+                                    text-sm
+                                    mb-2">
                                         {{$tag->describeTag}}
+                                    </a>
+                                @endforeach
+                            </div>
+                            <div>
+                                @foreach($libro->autores as $autor)
+                                    <a href="" 
+                                    class="inline-block 
+                                    px_3 
+                                    h-6 
+                                    bg-gray-600 
+                                    text-white
+                                    rounded-full
+                                    px-3 py-1
+                                    text-sm
+                                    mb-4">
+                                        {{$autor->nombre}}
                                     </a>
                                 @endforeach
                             </div>

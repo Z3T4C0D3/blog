@@ -24,7 +24,12 @@ class LibrosController extends Controller
     }
 
     public function clasificaciones(clasificaciones $clasificaciones){
-        return $clasificaciones;
+        $libros = libros::where('clasificaciones_id', $clasificaciones->id)
+            ->where('status', 2)
+            ->latest('id')
+            ->paginate(2);
+
+        return view('libros.clasificaciones', compact('libros', 'clasificaciones'));
     }
 
 }

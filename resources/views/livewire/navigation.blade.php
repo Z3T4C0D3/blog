@@ -87,7 +87,7 @@
                     >
                         <li class="border-b border-gray-400">
                         @foreach ($clasificaciones as $clasificacion)
-                            <a href="#" class="flex items-center px-3 py-3 hover:bg-blue-600">
+                            <a href="{{route('libros.clasificaciones', $clasificacion)}}" class="flex items-center px-3 py-3 hover:bg-blue-600">
                                 
                                 <span class="ml-2">{{$clasificacion->describeClasificacion}}</span>
                             </a>
@@ -207,7 +207,7 @@
                     >
                         <li class="border-b border-gray-400">
                         @foreach ($clasificaciones as $clasificacion)
-                            <a href="#" class="flex items-center px-3 py-3 hover:bg-blue-600">
+                            <a href="{{route('libros.clasificaciones', $clasificacion)}}" class="flex items-center px-3 py-3 hover:bg-blue-600">
                                 
                                 <span class="ml-2">{{$clasificacion->describeClasificacion}}</span>
                             </a>
