@@ -25,7 +25,7 @@
             <table class="table table-striped table-dark">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        
                         <th>Nombre</th>
                         <th colspan="2"></th>
                     </tr>
@@ -34,7 +34,7 @@
                 <tbody>
                     @foreach($clasificaciones as $clasificacion)
                         <tr>
-                            <td>{{$clasificacion->id}}</td>
+                            
                             <td>{{$clasificacion->describeClasificacion}}</td>
                             <td width="10px">
                                 <a class="btn btn-primary btn-sm" href="{{route('admin.clasificaciones.edit', $clasificacion) }}">Editar</a>
@@ -43,7 +43,11 @@
                                 <form action="{{route('admin.clasificaciones.destroy', $clasificacion)}}" method="POST">
                                 @csrf 
                                 @method('delete')
-                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>  
+                                <button 
+                                    type="submit" 
+                                    class="btn btn-danger btn-sm
+                                    "
+                                    >Eliminar</button>  
                                 </form>
                             </td>
                         </tr>

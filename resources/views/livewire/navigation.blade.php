@@ -207,7 +207,7 @@
                         class="absolute font-bold bg-white shadow overflow-hidden rounded w-48 border mt-2 py-1 right-0 z-20"
                     >
                         <li class="border-b border-gray-400">
-                        @foreach ($clasificaciones as $clasificacion)
+                            @foreach ($clasificaciones as $clasificacion)
                             <a href="{{route('libros.clasificaciones', $clasificacion)}}" class="flex items-center px-3 py-3 hover:bg-blue-600">
                                 
                                 <span class="ml-2">{{$clasificacion->describeClasificacion}}</span>
