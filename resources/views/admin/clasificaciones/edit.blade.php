@@ -16,28 +16,8 @@
         <div class="card-body">
             {!! Form::model($clasificacione,[
                 'route' => ['admin.clasificaciones.update', $clasificacione], 
-                'method' => 'put' ]) !!}
-                <div class="form-group">
-                    {!! Form::label('describeClasificacion', 'Nombre') !!}
-                    {!! Form::text('describeClasificacion', 
-                    null, 
-                    ['class' => 'form-control', 
-                    'placeholder' => 'Ingrese el nombre de la clasificación']) !!}
-                
-                    @error('describeClasificacion')
-                        <span class="text-danger">{{$message}}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('slugClasificacion', 'Slug') !!}
-                    {!! Form::text('slugClasificacion', null, ['class' => 'form-control', 'placeholder', 'readonly' => 'Ingrese el slug de la clasificación']) !!}
-                    
-                    @error('slugClasificacion')
-                        <span class="text-danger">{{$message}}</span>
-                    @enderror
-                </div>
-                
+                'method'=>'put' ]) !!}
+                    @include('admin.clasificaciones.partials.form')
                 {!! Form::submit('Actualizar Clasificacion', ['class' => 'btn btn-primary']) !!}
                 <a class="btn btn-danger" href="{{route('admin.clasificaciones.index')}}">Volver</a>
             {!! Form::close() !!}

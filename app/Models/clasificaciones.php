@@ -9,6 +9,9 @@ class clasificaciones extends Model
 {
     use HasFactory;
     protected $fillable = ['describeClasificacion', 'slugClasificacion'];
+    public function getRouteKeyName(){
+        return "slugClasificacion";
+    }
     //RELACION UNO A MUCHOS
     public function libros(){
         return $this->hasMany(libros::class);

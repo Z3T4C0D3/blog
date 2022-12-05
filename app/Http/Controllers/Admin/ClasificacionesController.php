@@ -96,6 +96,6 @@ class ClasificacionesController extends Controller
     public function destroy(clasificaciones $clasificacione)
     {
         $clasificacione->delete();
-        return redirect()->route('admin.clasificaciones.index')->with('alertDelete', 'La clasificación se elimino con éxito');;
+        return redirect()->route('admin.clasificaciones.index')->with('alertDelete', 'La clasificación se elimino con éxito');
     }
 }
