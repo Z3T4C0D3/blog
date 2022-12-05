@@ -43,7 +43,7 @@ class ClasificacionesController extends Controller
         ]);
         
         $clasificacion = clasificaciones::create($request->all());
-        return redirect()->route('admin.clasificaciones.index', $clasificacion)->with('info', 'La clasificación se creó con exito');
+        return redirect()->route('admin.clasificaciones.index', $clasificacion)->with('alertCreated', 'La clasificación se creó con exito');
     }
 
     /**
@@ -84,7 +84,7 @@ class ClasificacionesController extends Controller
 
         $clasificacione->update($request->all());
 
-        return redirect()->route('admin.clasificaciones.edit', $clasificacione)->with('info', 'La clasificación se actualizo con exito');
+        return redirect()->route('admin.clasificaciones.index', $clasificacione)->with('alertEdit', 'La clasificación se actualizo con exito');
     }
 
     /**

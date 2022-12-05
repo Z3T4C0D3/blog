@@ -20,10 +20,7 @@ class autoresFactory extends Factory
         $nombre = $this->faker->unique()->name();
         return [
             'nombre' => $nombre,
-            'slugNombre' => Str::slug($nombre),
-            'apellidoPaterno' => $this->faker->lastName(),
-            'apellidoMaterno' =>$this->faker->lastName()
-
+            'slugNombre' => Str::slug($nombre)
         ];
     }
 }

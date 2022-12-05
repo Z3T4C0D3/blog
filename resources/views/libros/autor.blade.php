@@ -6,14 +6,25 @@
             text-center 
             text-3xl 
             font-bold
-            mb-4">
-            Autor: {{$autor->nombre}}
+            mb-4
+            rounded-xl
+            bg-gradient-to-r from-white to-gray">
+            {{$autor->nombre}}
         </h1>
         @foreach ($libros as $libro)
-        <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
+        <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden border border-black">
                 <img class="w-full h-72 object-cover object-center" src="{{$libro->image->url}}" alt="">
                 <div class="px-6 py-4">
-                    <h1 class="font-bold text-xl mb-2">
+                    <h1 class="text-3xl         
+                    border-double border-4 border-black
+                    bg-opacity-50
+                    text-black 
+                    leading-8 
+                    font-bold
+                    rounded-xl
+                    px-3 py-3
+                    button
+                    transition ease-in-out delay-50 bg-white hover:-translate-y-1 hover:scale-x-100 hover:bg-teal-100 duration-300">
                         <a href="{{route('libros.show', $libro)}}">{{$libro->titulo}}</a>
                     </h1>
                     <div class="text-gray-700 text-base">
@@ -21,11 +32,30 @@
                     </div>
                     <div class="px-6 pt-4 pb-2">
                         @foreach($libro->tags as $tag)
-                            <a class="inline-block bg-rose-500 rounded-full px-3 py-1 text-sm text-white" 
+                            <a class="inline-block 
+                            mr-4
+                            h-6 
+                            text-white
+                            rounded-full
+                            px-3 py-0.5
+                            text-sm
+                            mb-2
+                            border border-black
+                            button
+                            transition ease-in-out delay-50 bg-rose-600 hover:-translate-y-1 hover:scale-110 hover:bg-pink-900 duration-300" 
                             href="{{route('libros.tag', $tag)}}">{{$tag->describeTag}}</a>
                         @endforeach
                         @foreach($libro->autores as $autor)
-                            <a class="inline-block bg-gray-500 rounded-full px-3 py-1 text-sm text-white" 
+                            <a class="inline-block 
+                            h-6 
+                            text-white
+                            rounded-full
+                            px-3 py-0.5
+                            text-sm
+                            mb-4
+                            border border-black
+                            button
+                            transition ease-in-out delay-50 bg-gray-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-600 duration-300" 
                             href="{{route('libros.autor', $autor)}}">{{$autor->nombre}}</a>
                         @endforeach
                     </div>

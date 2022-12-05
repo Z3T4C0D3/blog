@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string("nombre");
             $table->string("slugNombre");
-            $table->string("apellidoPaterno");
-            $table->string("apellidoMaterno");
             $table->timestamps();
         });
     }

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\tags;
+use App\Models\autores;
 
-class TagController extends Controller
+class AutoresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = tags::all();
-        return view('admin.tags.index', compact('tags'));
+        $autores = autores::all();
+        return view('admin.autores.index', compact('autores'));
     }
 
     /**
@@ -26,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        return view('admin.autores.create');
     }
 
     /**
@@ -37,13 +37,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        
-       $request -> validate([
-            'describeTag' => "required",
-            'slugTag' => "required|unique:tags",
+        $request -> validate([
+            'nombre' => "required",
+            'slugNombre' => "required|unique:autores",
         ]);
-        $tag = tags::create($request->all());
-        return redirect()->route('admin.tags.index', $tag)->with('alertCreated', 'La etiqueta se creo con éxito'); 
+        $autor = autores::create($request->all());
+
+        return redirect()->route('admin.autores.index', $autor)->with('alertCreated', 'El autor se agrego con éxito'); 
     }
 
     /**
@@ -52,9 +52,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(tags $tag)
+    public function show(autores $autore)
     {
-        return view('admin.tags.show', compact('tag'));
+        return view('admin.autores.index', compact('autore'));
     }
 
     /**
@@ -63,9 +63,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(tags $tag)
+    public function edit(autores $autore)
     {
-        return view('admin.tags.edit', compact('tag'));
+        return view('admin.autores.edit', compact('autore'));
     }
 
     /**
@@ -75,15 +75,15 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tags $tag)
+    public function update(Request $request, autores $autore)
     {
         $request -> validate([
-            'describeTag' => "required",
-            'slugTag' => "required|unique:tags,slugTag,$tag->id",
+            'nombre' => "required",
+            'slugNombre' => "required|unique:autores,slugNombre,$autore->id",
         ]);
 
-        $tag ->update($request->all());
-        return redirect()->route('admin.tags.index', $tag)->with('alertEdit', 'La etiqueta se actualizo con éxito');
+        $autore ->update($request->all());
+        return redirect()->route('admin.autores.index', $autore)->with('alertEdit', 'El autor se actualizo con éxito')->with('alertEdit', 'El autor se modifico con éxito');
     }
 
     /**
@@ -92,9 +92,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tags $tag)
+    public function destroy(autores $autore)
     {
-        $tag->delete();
-        return redirect()->route('admin.tags.index')->with('alertDelete', 'La etiqueta se eliminó con éxito');
+        $autore->delete();
+        return redirect()->route('admin.autores.index')->with('alertDelete', 'La etiqueta se eliminó con éxito');
     }
 }

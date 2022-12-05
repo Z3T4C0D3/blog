@@ -2,9 +2,6 @@
 
 @section('title', 'BiblioTec')
 
-@section('content_header')
-    <h1>Editar Etiqueta</h1>
-@stop
 
 @section('content')
 @if (session('alertEdit'))
@@ -12,8 +9,11 @@
     <strong>{{session('alertEdit')}}</strong>
 </div>
 @endif
-    <div class="card">
-        <div class="card-body">
+    <div class="card-dark">
+        <div class="card-header">
+            <h1 class="text-center">Editar etiqueta</h1>
+        </div>
+        <div class="card-body bg-dark">
             {!! Form::model($tag, ['route'=>['admin.tags.update', $tag], 'method'=>'put']) !!}
                 @include('admin.tags.partials.form')
                 {!! Form::submit('Actualizar Etiqueta', ['class' => 'btn btn-primary']) !!}

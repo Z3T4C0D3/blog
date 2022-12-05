@@ -2,14 +2,14 @@
 
 @section('title', 'BiblioTec')
 
-@section('content_header')
-    <h1>Crear Etiquetas</h1>
-@stop
 
 @section('content')
     
-    <div class="card">
-        <div class="card-body">
+    <div class="card-dark">
+        <div class="card-header">
+            <h1 class="text-center">Agregar nueva etiqueta</h1>
+        </div>
+        <div class="card-body bg-dark">
             {!! Form::open(['route'=>'admin.tags.store']) !!}
                 @include('admin.tags.partials.form')
 

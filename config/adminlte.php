@@ -68,7 +68,7 @@ return [
     'logo_img_class' => 'brand-image img-square elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'BiblioTec Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -110,10 +110,10 @@ return [
         'enabled' => true,
         'img' => [
             'path' => 'img/template/biblioteca.png',
-            'alt' => 'AdminLTE Preloader Image',
-            'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'alt' => 'BiblioTec Logo',
+            'effect' => 'animation__wobble',
+            'width' => 350,
+            'height' => 350,
         ],
     ],
 
@@ -153,7 +153,7 @@ return [
     'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
+    'layout_dark_mode' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -194,7 +194,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -215,7 +215,7 @@ return [
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
+    'sidebar_scrollbar_theme' => 'os-theme-dark',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 30,
@@ -329,6 +329,12 @@ return [
             'route'  => 'admin.tags.index',
             'icon' => 'far fa-fw fa-bookmark',
             "active" => ['admin/tags*']
+        ],
+        [
+            'text' => 'Autores',
+            'route'  => 'admin.autores.index',
+            'icon' => 'far fa-fw fa-user',
+            "active" => ['admin/autores*']
         ],
         
         [

@@ -82,7 +82,7 @@
                                 rounded-xl
                                 px-3 py-3
                                 button
-                                transition ease-in-out delay-50 bg-white hover:-translate-y-1 hover:scale-x-100 hover:bg-teal-500 duration-300
+                                transition ease-in-out delay-50 bg-white hover:-translate-y-1 hover:scale-x-100 hover:bg-teal-200 duration-300
                                 ">
                                 <a 
                                     href="{{route('libros.show', $libro )}}">
