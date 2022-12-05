@@ -12,7 +12,7 @@
             {{$tag->describeTag}}
         </h1>
         @foreach ($libros as $libro)
-        <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
+        <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden  border border-black">
                 <img class="w-full h-72 object-cover object-center" src="{{$libro->image->url}}" alt="">
                 <div class="px-6 py-4">
                     <h1 class="text-3xl         
