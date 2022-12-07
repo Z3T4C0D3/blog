@@ -16,7 +16,7 @@ class libros extends Model
         return $this->belongsTo(clasificaciones::class);
     }
     public function editorial(){
-        return $this->belognsTo(editoriales::class);
+        return $this->belongsTo(editoriales::class);
     }
     //RELACION MUCHOS A MUCHOS
     public function tags(){
