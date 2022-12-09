@@ -26,7 +26,7 @@
         </x-adminlte-alert>
     </div>
     @endif
-    <div class="card-dark">
+    <div class="card">
         <div class="card-header">
             <a class="btn btn-success " href="{{route('admin.editoriales.create')}}">Agregar Etiqueta</a>
             <h1 class="text-center">Lista de Editoriales</h1>
