@@ -336,6 +336,12 @@ return [
             'icon' => 'far fa-fw fa-user',
             "active" => ['admin/autores*']
         ],
+        [
+            'text' => 'Editoriales',
+            'route'  => 'admin.editoriales.index',
+            'icon' => 'far fa-fw fa-building',
+            "active" => ['admin/editoriales*']
+        ],
         
         [
             'text'    => 'multilevel',

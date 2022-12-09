@@ -10,7 +10,7 @@
                 <div class="form-group">
                     {!! Form::label('slugTag', 'Slug') !!}
                     {!! Form::text('slugTag', null, ['class' => 'form-control', 'placeholder' => 'Ingrese slug de la etiqueta', 'readonly']) !!}
-                    @error('slug')
+                    @error('slugTag')
                         <small class="text-danger">{{$message}}</small>
                     @enderror
                 </div>
