@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(clasificacionSeeder::class);
         editoriales::factory(5)->create();
         tags::factory(8)->create();
-        autores::factory(15)->create();
+        autores::factory(100)->create();
         $this->call(librosSeeder::class);
 
         // \App\Models\User::factory()->create([

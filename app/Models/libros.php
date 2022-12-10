@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class libros extends Model
 {
     use HasFactory;
+    public function getRouteKeyName(){
+        return "slugLibros";
+    }
     //RELACION UNO A MUCHOS INVERSA
     public function user(){
         return $this->belognsTo(User::class);

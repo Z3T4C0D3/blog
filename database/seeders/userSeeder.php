@@ -22,6 +22,6 @@ class userSeeder extends Seeder
 
         ]);
 
-        User::factory(20)->create();
+        User::factory(5)->create();
     }
 }
