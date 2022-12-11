@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\autores;
+use App\Models\editoriales;
 use Illuminate\Http\Request;
 use App\Models\libros;
 use App\Models\clasificaciones;
 use App\Models\tags;
+use App\Http\Requests\StoreLibrosRequest;
 class LibrosController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -29,11 +32,12 @@ class LibrosController extends Controller
     {
         
         $clasificaciones = clasificaciones::pluck('describeClasificacion', 'id');
+        $editoriales = editoriales::pluck('describeEditorial', 'id');
         $tags = tags::all();
         //return $tags;
         $autores = autores::all();
         //return $clasificaciones;
-        return view('admin.libros.create', compact('clasificaciones', 'tags', 'autores'));
+        return view('admin.libros.create', compact('clasificaciones', 'tags', 'autores', 'editoriales'));
     }
 
     /**
@@ -42,9 +46,20 @@ class LibrosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreLibrosRequest $request)
     {
-        //
+        
+        $libro = libros::create($request->all());
+
+        if ($request->tags) {
+            $libro->tags()->attach($request->tags);
+        }
+        if ($request->autores) {
+            $libro->autores()->attach($request->autores);
+            
+        }
+        //dd($request->all());
+        return redirect()->route('admin.libros.index', $libro);
     }
 
     /**

@@ -16,16 +16,16 @@ return new class extends Migration
         Schema::create('libros', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('codigo');
+            $table->string('codigo')->nullable();
             $table->string('slugLibros');
-            $table->text('extract');
-            $table->longText('body');
+            $table->text('extract')->nullable();
             //Estatus BORRADOR 1|PUBLICADO 2
             $table->enum('status', [1,2])->default(1);
             //FOREIGN KEY
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('clasificaciones_id');
             $table->unsignedBigInteger('id_editorial');
+            $table->unsignedBigInteger('anioPublicacion')->nullable();
             //RESTRICCION DE FK
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('clasificaciones_id')->references('id')->on('clasificaciones')->onDelete('cascade');

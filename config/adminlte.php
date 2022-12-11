@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'img/template/biblioteca.png',
             'alt' => 'BiblioTec Logo',
@@ -188,7 +188,7 @@ return [
 
     'classes_body' => '',
     'classes_brand' => '',
-    'classes_brand_text' => 'text-dark',
+    'classes_brand_text' => 'text-white',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
@@ -215,7 +215,7 @@ return [
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
+    'sidebar_scrollbar_theme' => 'os-theme-dark',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 30,

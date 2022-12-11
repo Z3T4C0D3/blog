@@ -15,11 +15,16 @@
     </div>
     <div class="card-body">
         {!! Form::open(['route'=>'admin.libros.store', 'autocomplete' => 'off']) !!}
-            <div class="form-group">
+            {!! Form::hidden('user_id', auth()->user()->id) !!}
+            <div class="form-group @error('titulo')is-invalid @enderror">
                 {!! Form::label('titulo', 'Titulo del libro:') !!}
                 {!! Form::text('titulo', null, 
                 ['class' => 'form-control', 
                 'placeholder' => 'Ingrese el titulo del libro']) !!}
+                <hr>
+                @error('titulo')
+                    <small class="text-danger">El campo es requerido</small>
+                 @enderror
             </div>
             <div class="form-group">
                 {!! Form::label('slugLibros', 'Slug del libro:') !!}
@@ -27,28 +32,74 @@
                 ['class' => 'form-control', 
                 'placeholder' => 'Ingrese slug del libro',
                 'readonly']) !!}
+                <hr>
+                @error('slugLibros')
+                    <small class="text-danger">El campo es requerido</small>
+                @enderror
             </div>
             <div class="form-group">
-                {!! Form::label('clasificaciones_id', 'Categoria:') !!}
+                {!! Form::label('codigo', 'Codigo del libro:') !!}
+                {!! Form::text('codigo', null, 
+                ['class' => 'form-control', 
+                'placeholder' => 'Ingrese el codigo del libro']) !!}
+                <hr>
+                @error('codigo')
+                    
+                    <small class="text-danger">Este campo es requerido para publicar el libro</small>
+                 @enderror
+            </div>
+            <div class="form-group">
+                {!! Form::label('anioPublicacion', 'Año de publicaciond del libro:') !!}
+                {!! Form::text('anioPublicacion', null, 
+                ['class' => 'form-control', 
+                'placeholder' => 'Ingrese año de publicacion del libro']) !!}
+                <hr>
+                @error('anioPublicacion')
+                    
+                    <small class="text-danger">Este campo es requerido para publicar el libro</small>
+                 @enderror
+            </div>
+            <div class="form-group">
+                {!! Form::label('clasificaciones_id', 'Categoria del libro:') !!}
                 {!! Form::select('clasificaciones_id', $clasificaciones, null, 
-                ['class' => 'form-control']) !!}
+                ['class' => 'form-control', 'placeholder' => 'Seleccione clasificacion']) !!}
+                @error('clasificaciones_id')
+                    <small class="text-danger">Este campo es requerido para publicar el libr</small>
+                @enderror
             </div>
             <div class="form-group">
-                {!! Form::label('tags_id', 'Etiquetas:') !!}
-                <select class="js-example-basic-multiple" style="width: 100%" name="states[]" multiple="multiple">
+                {!! Form::label('id_editorial', 'Editorial de libro:') !!}
+                {!! Form::select('id_editorial', $editoriales, null, 
+                ['class' => 'form-control', 'placeholder' => 'Seleccione editorial']) !!}
+                <hr>
+                @error('codigo')
+                    
+                    <small class="text-danger">Este campo es requerido para publicar el libro</small>
+                 @enderror
+            </div>
+            <div class="form-group">
+                {!! Form::label('tags', 'Etiquetas del libro:') !!}
+                <select class="tags py-6" style="width: 100%" name="tags[]" multiple="multiple" >
+                    
                     @foreach($tags as $tag)
                     <option value="{{$tag->id}}">{{$tag->describeTag}}</option>
-                    
                     @endforeach 
                   </select>
+                  
+                    @error('tags')
+                        <small class="text-danger">Este campo es requerido para publicar el libr</small>
+                    @enderror
             </div>
             <div class="form-group">
-                {!! Form::label('autores_id', 'Autores:') !!}
-                <select class="js-example-basic-multiple" style="width: 100%" name="states[]" multiple="multiple">
+                {!! Form::label('autores', 'Autores del libro:') !!}
+                <select class="autores" style="width: 100% height: 100%" name="autores[]" multiple="multiple">
                     @foreach($autores as $autor)
                     <option value="{{$autor->id}}">{{$autor->nombre}}</option>
-                    
                     @endforeach 
+                   
+                    @error('autores')
+                        <small class="text-danger">Este campo es requerido para publicar el libr</small>
+                    @enderror
                   </select>
             </div>
 
@@ -64,17 +115,33 @@
                     {!! Form::radio('status', 2) !!}
                     Publicado
                 </label>
+                <hr>
+                @error('status')
+                    <small class="text-danger">Este campo es requerido para publicar el libr</small>
+                @enderror
             </div>
             
-
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="image-wrapper">
+                        <img src="https://cdn.pixabay.com/photo/2016/01/20/11/54/book-wall-1151405_960_720.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {!! Form::label('file', 'Imagen que se mostrara como partada de libro') !!}
+                        {!! Form::file('file', ['class' => 'form-control-file']) !!}
+                    </div>
+                </div>
+            </div>
             <div class="form-group">
                 {!! Form::label('extract', 'Extracto') !!}
                 {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}
+                @error('extract')
+                    <small class="text-danger">Este campo es requerido para publicar el libro</small>
+                @enderror
             </div>
-            <div class="form-group">
-                {!! Form::label('body', 'Informacion del libro') !!}
-                {!! Form::textarea('body', null, ['class' => 'form-control', 'rows' => '2']) !!}
-            </div>
+            
             {!! Form::submit('Agregar Libro', 
             ['class' => 'btn btn-primary']) !!}
             
@@ -84,9 +151,21 @@
 @stop
 
 @section('css')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-@stop
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />@stop
+    <style>
+        .image-wrapper{
+            position: relative;
+            padding-bottom: 56.5%;
+            
+        }
+        .image-wrapper img{
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
 
+        }
+    </style>
 @section('js')
     
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
@@ -114,9 +193,17 @@
 
         $(document).ready(function() {
             
-        $('.js-example-basic-multiple').select2({
-            theme: "classic"
-        });
+            $('.tags').select2({
+                theme: "classic",
+                placeholder: 'Seleccione una o mas etiquetas para el libro'
+                
+
+                
+            });
+            $('.autores').select2({
+                theme: "classic",
+                placeholder: 'Seleccione uno o mas autores para el libro'
+            });
         });
 
         </script>

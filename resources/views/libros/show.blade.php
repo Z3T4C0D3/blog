@@ -1,17 +1,19 @@
 <x-app-layout>
     <div class="container py-8 ">
         <h1 class="text-4xl font-bold text-gray-600" >{{$libro->titulo}}</h1>
-            <div class="text-lg text-gray-500 mb-6">
-                {{$libro->extract}}
-            </div>
+            
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- Contenido principal -->
                 <div class="lg:col-span-2">
                     <figure>
-                        <img class="w-full h-80 object-cover object-center" src="{{$libro->image->url}}" alt="">
+                        @if ($libro->image)
+                    <img class="w-full h-72 object-cover object-center" src="{{$libro->image->url}}" alt="">
+                @else
+                    <img class="w-full h-72 object-cover object-center" src="https://cdn.pixabay.com/photo/2016/01/20/11/54/book-wall-1151405_960_720.jpg" alt="">
+                @endif
                     </figure>
-                    <div class="text-base text-gray-500 mt-4">
-                        {{$libro->body}}
+                    <div class="text-lg text-gray-500 mb-6">
+                        {!!$libro->extract!!}
                     </div>
                 </div>
 

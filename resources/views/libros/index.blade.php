@@ -1,15 +1,15 @@
 <x-app-layout>
     <div>
         <div class="container
-        mx-auto
-        py-8
+            mx-auto
+            py-8
         bg-[#688883]">
             <div
                 class="grid
-            grid-cols-1
-            md:grid-cols-2
-            lg:grid-cols-3
-            gap-6">
+                grid-cols-1
+                md:grid-cols-2
+                lg:grid-cols-3
+                gap-6">
 
                 @foreach ($libros as $libro)
                     <article
@@ -18,13 +18,19 @@
                     bg-center
                     rounded-lg
                     border border-black
-                @if ($loop->first) md:col-span-2 @endif
+                @if ($loop->first) 
+                md:col-span-2 
+                @endif
                             //Storage::url($libro->image->url)
                             //
-"style="background-image: url({{ $libro->image->url }})">
+                        "style="background-image: url(
+                            @if($libro->image){{ $libro->image->url }} 
+                            @else https://cdn.pixabay.com/photo/2016/01/20/11/54/book-wall-1151405_960_720.jpg 
+                            @endif)">
 
                         <div
-                            class="w-full text-center
+                            class="w-full 
+                            text-center
                             h-full
                             px-8
                             flex flex-col
@@ -33,8 +39,8 @@
                                 @foreach ($libro->tags as $tag)
                                     <a href="{{ route('libros.tag', $tag) }}"
                                        class="inline-block
-                                    px_3
-                                    h-6
+                                        px_3
+                                        h-6
                                     text-white
                                     rounded-lg
                                     px-3 py-0.5

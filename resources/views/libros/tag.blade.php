@@ -13,7 +13,12 @@
         </h1>
         @foreach ($libros as $libro)
         <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
-                <img class="w-full h-72 object-cover object-center" src="{{$libro->image->url}}" alt="">
+                @if ($libro->image)
+                    <img class="w-full h-72 object-cover object-center" src="{{$libro->image->url}}" alt="">
+                @else
+                    <img class="w-full h-72 object-cover object-center" src="https://cdn.pixabay.com/photo/2016/01/20/11/54/book-wall-1151405_960_720.jpg" alt="">
+                @endif
+
                 <div class="px-6 py-4">
                     <h1 class="text-3xl         
                     border-double border-4 border-black
@@ -28,7 +33,7 @@
                         <a href="{{route('libros.show', $libro)}}">{{$libro->titulo}}</a>
                     </h1>
                     <div class="text-gray-700 text-base">
-                        {{$libro->extract}}
+                        {!!$libro->extract!!}
                     </div>
                     <div class="px-6 pt-6 pb-6">
                         @foreach($libro->tags as $tag)
