@@ -3,7 +3,7 @@
 @section('title', 'BiblioTec')
 
 @section('content_header')
-    <h1>Mostrar Detalle de Clasificaciones</h1>
+    <h1>Mostrar Roles</h1>
 @stop
 
 @section('content')

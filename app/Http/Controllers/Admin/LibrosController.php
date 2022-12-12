@@ -13,7 +13,13 @@ use App\Http\Requests\LibrosRequest;
 use Illuminate\Support\Facades\Storage;
 class LibrosController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('can:admin.libros.index')->only('index');
+        $this->middleware('can:admin.libros.create')->only('create', 'store');
+        $this->middleware('can:admin.libros.edit')->only('edit', 'update');
+        $this->middleware('can:admin.libros.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

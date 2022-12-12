@@ -9,9 +9,9 @@
 @stop
 
 @section('content')
-<div class="card-dark">
-    <div class="card-header">
-        <h1 class="text-center">Agregar nuevo libro</h1>
+<div class="card text-white bg-dark">
+    <div class="card-header  bg-gray">
+        <h1>Agregar nuevo libro</h1>
     </div>
     <div class="card-body">
         {!! Form::open(['route'=>'admin.libros.store', 'autocomplete' => 'off', 'files' => 'true']) !!}

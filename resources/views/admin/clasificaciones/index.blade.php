@@ -28,14 +28,17 @@
     @endif
     <div class="card-dark">
         <div class="card-header">
-            <a class="btn btn-success" href="{{route('admin.clasificaciones.create')}}">Agregar Clasificacion</a>
+            @can('admin.clasificaciones')
+                <a class="btn btn-success" href="{{route('admin.clasificaciones.create')}}">Agregar Clasificacion</a>
+            @endcan
+            
             <h1 class="text-center">Lista de Clasificaciones</h1>
         </div>
         <div class="card-body bg-dark">
             <table class="table table-striped table-dark">
                 <thead>
                     <tr>
-                        
+                        <th>ID</th>
                         <th>Nombre</th>
                         <th colspan="2"></th>
                     </tr>
@@ -44,9 +47,11 @@
                 <tbody>
                     @foreach($clasificaciones as $clasificacion)
                         <tr>
-                            
+                            <td>{{$clasificacion->id}}</td>
                             <td>{{$clasificacion->describeClasificacion}}</td>
                             <td width="10px">
+                            @can('admin.clasificaciones.edit')
+                            
                                 <a class="btn btn-primary btn-sm" href="{{route('admin.clasificaciones.edit', $clasificacion) }}">Editar</a>
                             </td>
                             <td width="10px">
@@ -60,6 +65,7 @@
                                     >Eliminar</button>  
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

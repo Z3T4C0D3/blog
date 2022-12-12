@@ -28,22 +28,29 @@
     @endif
     <div class="card-dark">
         <div class="card-header">
-            <a class="btn btn-success" href="{{route('admin.autores.create')}}">Agregar Autor</a>
+            @can('admin.autores.create')
+                <a class="btn btn-success" href="{{route('admin.autores.create')}}">Agregar Autor</a>
+            @endcan
+            
             <h1 class="text-center">Lista de Autores</h1>
         </div>
         <div class="card-body bg-dark">
             <table class="table table-striped table-dark">
                 <thead>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th colspan="2"></th>
                 </thead>
                     @foreach($autores as $autor)
                         <tr>
+                            <td>{{$autor->id}}</td>
                             <td>{{$autor->nombre}}</td>
                             <td width="10px">
-                                <a 
-                                class="btn btn-primary btn-sm"
-                                href="{{route('admin.autores.edit', $autor)}}">Editar</a>
+                            @can('admin.autores.edit')
+                                    <a 
+                                    class="btn btn-primary btn-sm"
+                                    href="{{route('admin.autores.edit', $autor)}}">Editar</a>
+                                
                             </td>
                             <td width="10px">
                                 <form action="{{route('admin.autores.destroy', $autor)}}" method="POST">
@@ -54,6 +61,7 @@
                                         type="submit">Eliminar</button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 <tbody>

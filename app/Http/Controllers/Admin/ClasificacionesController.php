@@ -8,6 +8,13 @@ use App\Models\clasificaciones;
 
 class ClasificacionesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.clasificaciones.index')->only('index');
+        $this->middleware('can:admin.clasificaciones.create')->only('create', 'store');
+        $this->middleware('can:admin.clasificaciones.edit')->only('edit', 'update');
+        $this->middleware('can:admin.clasificaciones.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

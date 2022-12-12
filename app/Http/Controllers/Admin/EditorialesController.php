@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class EditorialesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.editoriales.index')->only('index');
+        $this->middleware('can:admin.editoriales.create')->only('create', 'store');
+        $this->middleware('can:admin.editoriales.edit')->only('edit', 'update');
+        $this->middleware('can:admin.editoriales.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

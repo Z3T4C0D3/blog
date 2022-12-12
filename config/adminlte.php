@@ -308,83 +308,67 @@ return [
             'text'        => 'Dashboard',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-fw fa-columns',
+            'can'  => 'admin.home',
             
         ],
-        ['header' => 'ADMINISTRADOR'],
+        [
+            'text'        => 'Usuarios',
+            'route'        => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
+            'can'  => 'admin.users.index',
+            
+        ],
+        [
+            'text'        => 'Roles',
+            'route'        => 'admin.roles.index',
+            'icon'        => 'fas fa-fw fa-user-cog',
+            'can'  => 'admin.users.index',
+            
+        ],
+        
         [
             'text' => 'Clasificaciones',
             'route'  => 'admin.clasificaciones.index',
             'icon' => 'fab fa-fw fa-buffer',
-            "active" => ['admin/clasificaciones*']
+            "active" => ['admin/clasificaciones*'],
+            'can'  => 'admin.clasificaciones.index',
         ],
         [
             'text' => 'Etiquetas',
             'route'  => 'admin.tags.index',
             'icon' => 'far fa-fw fa-bookmark',
-            "active" => ['admin/tags*']
+            "active" => ['admin/tags*'],
+            'can'  => 'admin.tags.index',
         ],
         [
             'text' => 'Autores',
             'route'  => 'admin.autores.index',
             'icon' => 'far fa-fw fa-user',
-            "active" => ['admin/autores*']
+            "active" => ['admin/autores*'],
+            'can'  => 'admin.autores.index',
         ],
         [
             'text' => 'Editoriales',
             'route'  => 'admin.editoriales.index',
             'icon' => 'far fa-fw fa-building',
-            "active" => ['admin/editoriales*']
+            "active" => ['admin/editoriales*'],
+            'can'  => 'admin.editoriales.index',
         ],
         
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+        
 
         ['header' => 'OPCIONES DE LIBRO'],
         [
             'text'       => 'Lista de Libros',         
             'route'      => 'admin.libros.index',
             'icon'       => 'fas fa-fw fa-clipboard',
+            'can'  => 'admin.libros.index',
         ],
         [
             'text'       => 'Agregar nuevo libro',
             'route'        => 'admin.libros.create',
             'icon'       => 'fas fa-fw fa-file',
+            'can'  => 'admin.libros.create',
         ],
         
     ],

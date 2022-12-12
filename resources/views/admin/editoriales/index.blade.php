@@ -28,7 +28,10 @@
     @endif
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-success " href="{{route('admin.editoriales.create')}}">Agregar Etiqueta</a>
+            @can('admin.editoriales.create')
+                <a class="btn btn-success float-left " href="{{route('admin.editoriales.create')}}">Agregar Etiqueta</a>
+            @endcan
+            
             <h1 class="text-center">Lista de Editoriales</h1>
         </div>
         <div class="card-body bg-dark">
@@ -42,6 +45,8 @@
                         <tr>
                             <td>{{$editorial->describeEditorial}}</td>
                             <td width="10px">
+                            @can('admin.editoriales.edit')
+                                    
                                 <a 
                                     class="btn btn-primary btn-sm"
                                     href="{{route('admin.editoriales.edit', $editorial)}}">Editar</a>
@@ -55,6 +60,7 @@
                                         type="submit">Eliminar</button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

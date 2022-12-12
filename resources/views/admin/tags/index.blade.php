@@ -28,20 +28,26 @@
     @endif
    <div class="card-dark">
         <div class="card-header">
-            <a class="btn btn-success " href="{{route('admin.tags.create')}}">Agregar Etiqueta</a>
+            @can('admin.tags.create')
+                <a class="btn btn-success " href="{{route('admin.tags.create')}}">Agregar Etiqueta</a>
+            @endcan
             <h1 class="text-center">Lista de Etiquetas</h1>
         </div>
             <div class="card-body bg-dark">
                 <table class="table table-dark table-striped">
                     <thead>
+                        <th class="text-lg">ID</th>
                         <th class="text-lg">Etiqueta</th>
                         <th colspan="2"></th>
                     </thead>
                     <tbody>
                         @foreach ($tags as $tag)
                             <tr>
+                                <td>{{$tag->id}}</td>
                                 <td>{{$tag->describeTag}}</td>
                                 <td width="10px">
+                                @can('admin.tags.edit')
+                                        
                                     <a 
                                         class="btn btn-primary btn-sm"
                                         href="{{route('admin.tags.edit', $tag)}}">Editar</a>
@@ -55,6 +61,7 @@
                                             type="submit">Eliminar</button>
                                     </form>
                                 </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>

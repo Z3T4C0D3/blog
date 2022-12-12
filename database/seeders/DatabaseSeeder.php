@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Storage::makeDirectory('public/libros');
+        $this->call(RoleSedder::class);
         $this->call(userSeeder::class);
         $this->call(clasificacionSeeder::class);
         editoriales::factory(5)->create();
