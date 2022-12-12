@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\libros;
 use App\Models\clasificaciones;
 use App\Models\tags;
-use App\Http\Requests\StoreLibrosRequest;
+use App\Http\Requests\LibrosRequest;
 use Illuminate\Support\Facades\Storage;
 class LibrosController extends Controller
 {
@@ -47,7 +47,7 @@ class LibrosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLibrosRequest $request)
+    public function store(LibrosRequest $request)
     {
         /* return Storage::put('public/libros', $request->file('file')); */
         
@@ -69,7 +69,7 @@ class LibrosController extends Controller
             
         }
         //dd($request->all());
-        return redirect()->route('admin.libros.index', $libro);
+        return redirect()->route('admin.libros.index', $libro)->with('alertCreated', 'El libro se agrego exito');
     }
 
     /**
@@ -91,7 +91,15 @@ class LibrosController extends Controller
      */
     public function edit(libros $libro)
     {
-        return view('admin.libros.edit', compact('libro'));
+        //Policy
+        //$this->authorize('author', $libro);
+        $clasificaciones = clasificaciones::pluck('describeClasificacion', 'id');
+        $editoriales = editoriales::pluck('describeEditorial', 'id');
+        $tags = tags::all();
+        //return $tags;
+        $autores = autores::all();
+        //return $clasificaciones;
+        return view('admin.libros.edit', compact('libro', 'clasificaciones', 'editoriales', 'tags', 'autores'));
     }
 
     /**
@@ -101,9 +109,36 @@ class LibrosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,libros  $libro)
+    public function update(LibrosRequest $request,libros $libro)
     {
-        //
+        //Policy
+        //$this->authorize('author', $libro);
+
+        $libro->update($request->all());
+        if ($request->file('file')) {
+            $url = Storage::put('public/libros', $request->file('file'));
+            //Si existe una imagen para el libro borrar antes de actualizar
+            if ($libro->image) {
+                Storage::delete($libro->image->url);
+                $libro->image()->update([
+                    'url' => $url
+                ]);
+            } else {
+                $libro->image()->create([
+                    'url' => $url
+                ]);
+            }
+            
+        }
+        if ($request->tags) {
+
+            $libro->tags()->sync($request->tags);
+        }
+        if ($request->autores) {
+            $libro->autores()->sync($request->autores);
+            
+        }
+        return redirect() -> route('admin.libros.index', $libro)->with('alertUpdate', 'El libro se modifico con exito');
     }
 
     /**
@@ -114,6 +149,10 @@ class LibrosController extends Controller
      */
     public function destroy(libros $libro)
     {
-        //
+        //Policy
+        //$this->authorize('author', $libro);
+
+        $libro->delete();
+        return redirect()->route('admin.libros.index', $libro)->with('alertDelete', 'El libro se elimino con exito');
     }
 }
