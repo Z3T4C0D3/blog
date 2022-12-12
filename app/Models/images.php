@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class images extends Model
 {
-    
+    protected $fillable = ['url'];   
     use HasFactory;
     //RELACION POLIMORFICA
     public function imageable(){

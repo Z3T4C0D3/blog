@@ -24,7 +24,8 @@
                             //Storage::url($libro->image->url)
                             //
                         "style="background-image: url(
-                            @if($libro->image){{ $libro->image->url }} 
+                            @if($libro->image)
+                            {{ Storage::url($libro->image->url) }} 
                             @else https://cdn.pixabay.com/photo/2016/01/20/11/54/book-wall-1151405_960_720.jpg 
                             @endif)">
 

@@ -14,7 +14,7 @@
         <h1 class="text-center">Agregar nuevo libro</h1>
     </div>
     <div class="card-body">
-        {!! Form::open(['route'=>'admin.libros.store', 'autocomplete' => 'off']) !!}
+        {!! Form::open(['route'=>'admin.libros.store', 'autocomplete' => 'off', 'files' => 'true']) !!}
             {!! Form::hidden('user_id', auth()->user()->id) !!}
             <div class="form-group @error('titulo')is-invalid @enderror">
                 {!! Form::label('titulo', 'Titulo del libro:') !!}
@@ -49,7 +49,7 @@
                  @enderror
             </div>
             <div class="form-group">
-                {!! Form::label('anioPublicacion', 'Año de publicaciond del libro:') !!}
+                {!! Form::label('anioPublicacion', 'Año de publicación del libro:') !!}
                 {!! Form::text('anioPublicacion', null, 
                 ['class' => 'form-control', 
                 'placeholder' => 'Ingrese año de publicacion del libro']) !!}
@@ -124,14 +124,18 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="image-wrapper">
-                        <img src="https://cdn.pixabay.com/photo/2016/01/20/11/54/book-wall-1151405_960_720.jpg" alt="">
+                        <img id="picture" src="https://cdn.pixabay.com/photo/2016/01/20/11/54/book-wall-1151405_960_720.jpg" alt="">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        {!! Form::label('file', 'Imagen que se mostrara como partada de libro') !!}
-                        {!! Form::file('file', ['class' => 'form-control-file']) !!}
+                        {!! Form::label('file', 'Imagen que se mostrara como portada de libro') !!}
+                        {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
                     </div>
+                    @error('file')
+                        <span class="text-danger">Archivo incorrecto, seleccione una imagen</span>
+                    @enderror
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus magnam ex distinctio vel expedita ducimus ipsam omnis similique, facere nisi a quaerat qui. Tenetur corporis facere dolorem esse quaerat nostrum.</p>
                 </div>
             </div>
             <div class="form-group">
@@ -190,6 +194,19 @@
             .catch( error => {
                 console.error( error );
         } );
+
+        //Cambiar imagen
+        document.getElementById("file").addEventListener('change', cambiarImagen);
+
+        function cambiarImagen(event){
+            var file = event.target.files[0];
+
+            var reader = new FileReader();
+            reader.onload = (event) =>{
+                document.getElementById("picture").setAttribute('src', event.target.result);
+            } 
+            reader.readAsDataURL(file);
+        }
 
         $(document).ready(function() {
             

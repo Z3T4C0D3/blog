@@ -30,7 +30,8 @@ class StoreLibrosRequest extends FormRequest
         $rules = [
             'titulo' => 'required',
             'slugLibros' => 'required|unique:libros',
-            'status' => 'required|in:1,2'
+            'status' => 'required|in:1,2',
+            'file' => 'image'
         ];
         if ($this->status == 2) {
             $rules = array_merge($rules,[

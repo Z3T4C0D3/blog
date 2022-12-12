@@ -10,6 +10,7 @@ use App\Models\libros;
 use App\Models\clasificaciones;
 use App\Models\tags;
 use App\Http\Requests\StoreLibrosRequest;
+use Illuminate\Support\Facades\Storage;
 class LibrosController extends Controller
 {
 
@@ -48,8 +49,17 @@ class LibrosController extends Controller
      */
     public function store(StoreLibrosRequest $request)
     {
+        /* return Storage::put('public/libros', $request->file('file')); */
         
         $libro = libros::create($request->all());
+
+        if ($request->file('file')) {
+            $url = Storage::put('public/libros', $request->file('file'));
+
+            $libro->image()->create([
+                'url' => $url
+            ]);
+        }
 
         if ($request->tags) {
             $libro->tags()->attach($request->tags);

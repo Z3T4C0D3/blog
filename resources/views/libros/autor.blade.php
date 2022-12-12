@@ -14,10 +14,10 @@
         @foreach ($libros as $libro)
         <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden border border-black">
             @if ($libro->image)
-            <img class="w-full h-72 object-cover object-center" src="{{$libro->image->url}}" alt="">
+            <img class="w-full h-72 object-cover object-center" src="{{Storage::url($libro->image->url)}}" alt="">
             @else
             <img class="w-full h-72 object-cover object-center" src="https://cdn.pixabay.com/photo/2016/01/20/11/54/book-wall-1151405_960_720.jpg" alt="">
-        s@endif
+        @endif
                 <div class="px-6 py-4">
                     <h1 class="text-3xl         
                     border-double border-4 border-black
